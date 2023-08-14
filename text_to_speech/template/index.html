@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text-to-Speech Conversion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Text-to-Speech Conversion</h1>
+    <form action="/submit" method="post">
+        <div class="option">
+            <input type="radio" id="urlOption" name="inputOption" value="url">
+            <label for="urlOption">Convert URL</label>
+        </div>
+        <div class="option">
+            <input type="radio" id="textOption" name="inputOption" value="text">
+            <label for="textOption">Convert Text</label>
+        </div>
+
+        <div id="urlInputSection">
+            <label for="urlInput">Enter URL:</label>
+            <input type="url" id="urlInput" name="urlInput">
+        </div>
+
+        <div id="textInputSection">
+            <label for="textInput">Enter Text:</label>
+            <textarea id="textInput" name="textInput" rows="4" cols="50"></textarea>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <script>
+        const urlOption = document.getElementById("urlOption");
+        const textOption = document.getElementById("textOption");
+        const urlInputSection = document.getElementById("urlInputSection");
+        const textInputSection = document.getElementById("textInputSection");
+
+        urlOption.addEventListener("click", () => {
+            urlInputSection.style.display = "block";
+            textInputSection.style.display = "none";
+        });
+
+        textOption.addEventListener("click", () => {
+            urlInputSection.style.display = "none";
+            textInputSection.style.display = "block";
+        });
+    </script>
+</body>
+</html>
